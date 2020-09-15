@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            text-align: center;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 15px;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin: auto;
+            background-color: #e0e0e0;
+        }
+
+        th {
+            background-color: #cccccc;
+            border: 2px solid black;
+            padding: 15px;
+        }
+        td{
+            text-align-last: center;
+        }
+        
+        h1 {
+            font-size: 35px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        .first-column{
+            background-color: #cccccc;
+            border: 2px solid black;
+        }
+        .sequences-align {
+            width: 30%;
+        }
+        .sequences-align td{
+            padding: 8px;
+            text-align: center;
+        }
+
+        .row-1{
+            background-color: #8a8a8a;
+        }
+        
+        .row-2{
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pairwise global align</h1>
+    <hr>
+    <h2>Matriz de pontuação</h2>
+
+    <table>
+        <thead>
+            <th style="background-color: #ffffff;"></th>
+            <th>-</th>
+
+            <%for(i=0; i < sequence1.length ; i++) { %>
+                <th><%= sequence1[i]%></th>
+            <% } %>
+        </thead>
+        <tbody>
+
+            <%for(i = 0; i < matrix.length ; i++) { %>
+                <tr>
+                    <% if(i === 0) { %>
+                        <td class="first-column">-</td>
+                    <% } else { %>
+                        <td class="first-column"><%= sequence2[i-1] %></td>
+                    <% } %>
+
+                    <%for(j = 0; j < matrix[i].length ; j++) { %>
+                        <td><%= matrix[i][j] %></td>
+                    <% } %>
+                 
+                </tr>
+            <% } %>       
+        </tbody>
+    </table>
+
+    <h2>Alinhamento ótimo</h2>
+
+    <table class="sequences-align">
+        <tbody>
+            <tr class="row-1">
+               <%for(i=0; i < sequenceAlignment1.length; i++ ) { %>
+                    <td><%= sequenceAlignment1[i] %></td>
+               <% } %>
+            </tr>
+            <tr class="row-2">
+                <%for(i=0; i < sequenceAlignment2.length; i++ ) { %>
+                    <td><%= sequenceAlignment2[i] %></td>
+                <% } %>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
